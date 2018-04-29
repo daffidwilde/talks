@@ -1,3 +1,8 @@
-intro-to-ciw/*.aux
-intro-to-ciw/*.log
-intro-to-ciw/.ipynb_checkpoints/*
+*.aux
+*.nav
+*.out
+*.snm
+*.toc
+*.swp
+*.log
+.ipynb_checkpoints/
