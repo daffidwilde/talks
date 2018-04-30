@@ -85,10 +85,10 @@
 
     \begin{figure}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/no_spells_freq_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/no_spells_freq_hist.pdf}
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/no_spells_density_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/no_spells_density_hist.pdf}
         \end{minipage}
     \end{figure}
 \end{frame}
@@ -98,10 +98,10 @@
 
     \begin{figure}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/LOS_freq_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/LOS_freq_hist.pdf}
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/LOS_density_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/LOS_density_hist.pdf}
         \end{minipage}
     \end{figure}
 \end{frame}
@@ -119,9 +119,49 @@
 
     Other areas of interest to us are:
     \begin{itemize}
+        \item Other clinical measures
         \item Demographic variables
         \item Interactions between variables
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Clinical variables}
+
+    We will investigate:
+    \begin{itemize}
+        \item the number of diagnoses
+        \item the number of procedures
+    \end{itemize}
+
+    \pause%
+    These contribute to comorbidity rates and presumably costs.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Number of diagnoses}
+   
+    \begin{figure}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]{./img/diag_no_freq_hist.pdf}
+        \end{minipage}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]{./img/diag_no_density_hist.pdf}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Number of procedures}
+
+    \begin{figure}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]{./img/proc_no_freq_hist.pdf}
+        \end{minipage}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]{./img/proc_no_density_hist.pdf}
+        \end{minipage}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -145,10 +185,10 @@
 
     \begin{figure}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/age_freq_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/age_freq_hist.pdf}
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/age_density_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/age_density_hist.pdf}
         \end{minipage}
     \end{figure}
 \end{frame}
@@ -158,7 +198,6 @@
 
     \vspace{-15pt}
     \begin{figure}
-        \centering
         \includegraphics[width=\linewidth]{./img/corr_heatmap.pdf}
     \end{figure}
 \end{frame}
@@ -193,6 +232,16 @@
     \begin{figure}
         \includegraphics[width=\linewidth]{./img/coeff_variation.pdf}
     \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Are these actually important?}
+
+    Despite the relative variation of our cost components being whatever value,
+    does it matter to the actual cost?
+
+    \vspace{10pt}
+    Let us investigate their contribution to the final cost.
 \end{frame}
 
 \begin{frame}
@@ -237,38 +286,69 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Summative analysis}
+    \frametitle{Number of spells}
 
     \begin{figure}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]
-            {./img/diabetic_no_spells_freq_hist.pdf}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_no_spells_freq_hist.pdf}
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]
-            {./img/diabetic_no_spells_density_hist.pdf}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_no_spells_density_hist.pdf}
         \end{minipage}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Summative analysis}
+    \frametitle{Length of stay}
 
     \begin{figure}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/diabetic_LOS_freq_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/diabetic_LOS_freq_hist.pdf}
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/diabetic_LOS_density_hist.pdf}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_LOS_density_hist.pdf}
         \end{minipage}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Summative analysis}
+    \frametitle{Net cost}
 
     \begin{figure}
         \includegraphics[width=\linewidth]{./img/diabetic_netcost_kde.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Number of diagnoses}
+   
+    \begin{figure}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_diag_no_freq_hist.pdf}
+        \end{minipage}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_diag_no_density_hist.pdf}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Number of procedures}
+
+    \begin{figure}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_proc_no_freq_hist.pdf}
+        \end{minipage}
+        \begin{minipage}{\linewidth}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_proc_no_density_hist.pdf}
+        \end{minipage}
     \end{figure}
 \end{frame}
 
@@ -277,10 +357,11 @@
 
     \begin{figure}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/diabetic_age_freq_hist.pdf}
+            \includegraphics[width=\linewidth]{./img/diabetic_age_freq_hist.pdf}
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \includegraphics[width=\linewidth]{./img/diabetic_age_density_hist.pdf}
+            \includegraphics[width=\linewidth]
+                {./img/diabetic_age_density_hist.pdf}
         \end{minipage}
     \end{figure}
 \end{frame}
