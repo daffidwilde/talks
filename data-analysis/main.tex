@@ -6,7 +6,7 @@
 \author{Henry Wilde}
 \institute{Cardiff University School of Mathematics}
 
-\usetheme{Hannover}
+% \usetheme{Hannover}
 \usecolortheme{seahorse}
 \begin{document}
 
@@ -14,10 +14,10 @@
 \titlepage%
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
+% \begin{frame}
+% \frametitle{Outline}
+% \tableofcontents
+% \end{frame}
 
 \section{Motivation}
 
@@ -37,7 +37,7 @@
 \subsection{Structure and origin}
 \begin{frame}
     \frametitle{Structure and origin}
-
+    \textbf{This slide should be replaced with a graphic.}
     \pause%
     All data is provided by the Cwm Taf University Health Board.
     \vspace{10pt}
@@ -68,7 +68,8 @@
 \subsection{Summative analysis}
 \begin{frame}
     \frametitle{Summative analysis}
-
+    \textbf{Not strictly necessary to have this up as a slide. Better to just
+    say it during previous slide.}
     \begin{itemize}
         \pause%
         \item Our data is skewed towards low-cost, short-stay episodes
@@ -84,12 +85,7 @@
     \frametitle{Number of spells}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/no_spells_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/no_spells_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/no_spells_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -97,12 +93,7 @@
     \frametitle{Length of stay (spell-wise)}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/LOS_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/LOS_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/LOS_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -110,13 +101,12 @@
     \frametitle{Net cost}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/netcost_kde.pdf}
+    \includegraphics[width=\linewidth]{./img/netcost_kde.pdf}
     \end{figure}
 \end{frame}
 
 \begin{frame}
     \frametitle{Summative analysis}
-
     Other areas of interest to us are:
     \begin{itemize}
         \item Other clinical measures
@@ -140,14 +130,9 @@
 
 \begin{frame}
     \frametitle{Number of diagnoses}
-   
+
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/diag_no_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/diag_no_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/diag_no_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -155,12 +140,7 @@
     \frametitle{Number of procedures}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/proc_no_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/proc_no_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/proc_no_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -184,12 +164,7 @@
     \frametitle{Demographic analysis}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/age_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/age_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/age_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -198,7 +173,7 @@
 
     \vspace{-15pt}
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/corr_heatmap.pdf}
+    \includegraphics[width=\linewidth]{./img/corr_heatmap.pdf}
     \end{figure}
 \end{frame}
 
@@ -207,7 +182,7 @@
 
 \begin{frame}
     \frametitle{Measuring variation}
-
+    \textbf{This slide is unnecessary and confusing to non-mathematicians.}
     Variance is not scale invariant and did lead to misconceptions.
 
     \pause%
@@ -230,7 +205,7 @@
     \frametitle{Measuring variation}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/coeff_variation.pdf}
+    \includegraphics[width=\linewidth]{./img/coeff_variation.pdf}
     \end{figure}
 \end{frame}
 
@@ -248,8 +223,9 @@
     \frametitle{Cost component contribution}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/cost_contribution.pdf}
+    \includegraphics[width=\linewidth]{./img/cost_contribution.pdf}
     \end{figure}
+    \textbf{Add slide with bubble plot for general data set.}
 \end{frame}
 
 
@@ -259,7 +235,7 @@
 
 \begin{frame}
     \frametitle{General methods for slice analysis}
-
+    \textbf{Too wordy?}
     Given some slice of the data, we want to:
     \begin{itemize}
         \item Examine cost variations and general surface-level statistics
@@ -289,14 +265,7 @@
     \frametitle{Number of spells}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_no_spells_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_no_spells_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/diabetic_no_spells_joint_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -304,13 +273,7 @@
     \frametitle{Length of stay}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/diabetic_LOS_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_LOS_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/diabetic_LOS_joint_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -318,7 +281,7 @@
     \frametitle{Net cost}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/diabetic_netcost_kde.pdf}
+    \includegraphics[width=\linewidth]{./img/diabetic_netcost_kde.pdf}
     \end{figure}
 \end{frame}
 
@@ -326,14 +289,7 @@
     \frametitle{Number of diagnoses}
    
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_diag_no_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_diag_no_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/diabetic_diag_no_joint_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -341,14 +297,7 @@
     \frametitle{Number of procedures}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_proc_no_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_proc_no_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/diabetic_proc_no_joint_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -356,13 +305,7 @@
     \frametitle{Demographic analysis}
 
     \begin{figure}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]{./img/diabetic_age_freq_hist.pdf}
-        \end{minipage}
-        \begin{minipage}{\linewidth}
-            \includegraphics[width=\linewidth]
-                {./img/diabetic_age_density_hist.pdf}
-        \end{minipage}
+    \includegraphics[width=\linewidth]{./img/diabetic_age_joint_hist.pdf}
     \end{figure}
 \end{frame}
 
@@ -370,7 +313,7 @@
     \frametitle{Cost variation}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/diabetic_coeff_variation.pdf}
+    \includegraphics[width=\linewidth]{./img/diabetic_coeff_variation.pdf}
     \end{figure}
 \end{frame}
 
@@ -378,7 +321,63 @@
     \frametitle{Cost component contribution}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/diabetic_cost_contribution.pdf}
+    \includegraphics[width=\linewidth]{./img/diabetic_cost_contribution.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Relative importance}
+
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/diabetic_bubble_contribution.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cost component distributions}
+
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/small_contribution_violin.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cost component distributions}
+
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/small_contribution_box.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cost component distributions}
+
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/med_contribution_violin.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cost component distributions}
+
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/med_contribution_box.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cost component distributions}
+
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/large_contribution_violin.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cost component distributions}
+
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/large_contribution_box.pdf}
     \end{figure}
 \end{frame}
 
@@ -387,7 +386,7 @@
 
     \vspace{-15pt}
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/diabetic_corr_heatmap.pdf}
+    \includegraphics[width=\linewidth]{./img/diabetic_corr_heatmap.pdf}
     \end{figure}
 \end{frame}
 
@@ -396,13 +395,22 @@
 
     \vspace{-15pt}
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/differences_corr_heatmap.pdf}
+    \includegraphics[width=\linewidth]{./img/differences_corr_heatmap.pdf}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Diabetic patient analysis}
+    \frametitle{Correlation (ratio)}
 
+    \vspace{-15pt}
+    \begin{figure}
+    \includegraphics[width=\linewidth]{./img/ratio_corr_heatmap.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Diabetic patient resource consumption analysis}
+    \textbf{Too wordy.}
     We will focus our definition of system `cost' on three measures:
 
     \pause%
@@ -426,9 +434,9 @@
 
 \begin{frame}
     \frametitle{Resource consumption}
-
+    \textbf{These plots need CIs and accompanying boxplots.}
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/diabetic_admissions.pdf}
+    \includegraphics[width=\linewidth]{./img/diabetic_admissions.pdf}
     \end{figure}
 \end{frame}
 
@@ -436,7 +444,7 @@
     \frametitle{Resource consumption}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]{./img/diabetic_LOS_time.pdf}
+    \includegraphics[width=\linewidth]{./img/diabetic_LOS_time.pdf}
     \end{figure}
 \end{frame}
 
@@ -444,8 +452,7 @@
     \frametitle{Resource consumption}
 
     \begin{figure}
-        \includegraphics[width=\linewidth]
-            {./img/diabetic_netcost_proportions.pdf}
+    \includegraphics[width=\linewidth]{./img/diabetic_netcost_proportions.pdf}
     \end{figure}
 \end{frame}
 
