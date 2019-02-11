@@ -1,6 +1,10 @@
 *.aux
+*.bbl
+*.blg
+*blx.bib
 *.nav
 *.out
+*.run.xml
 *.snm
 *.toc
 *.swp
