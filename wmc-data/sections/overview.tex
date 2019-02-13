@@ -1,0 +1,43 @@
+\section{An overview of the data}
+\graphicspath{{img/overview/}}
+\frame{\frametitle{An overview}
+    \begin{minipage}{.5\linewidth}
+        \makebox[\linewidth]{%
+            \includegraphics[width=\linewidth]{nspells_bar.pdf}
+        }
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+        \makebox[\linewidth]{%
+            \includegraphics[width=\linewidth]{los_bar.pdf}
+        }
+    \end{minipage}
+
+    \begin{minipage}{.5\linewidth}
+        \makebox[\linewidth]{%
+            \includegraphics[width=\linewidth]{ndiag_bar.pdf}
+        }
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+        \makebox[\linewidth]{%
+            \includegraphics[width=\linewidth]{nproc_bar.pdf}
+        }
+    \end{minipage}
+}
+
+\frame{\frametitle{Net costs}
+    \makebox[\linewidth]{%
+        \begin{minipage}{.8\imgwidth}
+            \includegraphics[width=\linewidth]{netcost_kde.pdf}
+        \end{minipage}%
+        \begin{minipage}{.2\paperwidth}
+            \resizebox{\linewidth}{!}{%
+                \input{tex/netcost.tex}
+            }
+        \end{minipage}
+    }
+}
+
+\frame{\frametitle{Variation and importance}
+    \includegraphics[width=\linewidth]{cost_bubble.pdf}
+}
+
