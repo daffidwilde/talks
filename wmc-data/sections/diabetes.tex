@@ -1,0 +1,35 @@
+\section{Diabetic patient analysis}
+\graphicspath{{img/diabetes/}}
+\frame{\frametitle{An overview}
+    \centering
+    \begin{minipage}{.6\linewidth}
+        \makebox[\linewidth]{%
+            \includegraphics[width=\linewidth]{los_bar.pdf}
+        }
+    \end{minipage}\hfill%
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \textbf{\tiny{Length of stay}}
+        \resizebox{\linewidth}{!}{%
+            \input{tex/los_summary.tex}
+        }
+    \end{minipage}\hfill%
+
+    \begin{minipage}{.6\linewidth}
+        \makebox[\linewidth]{%
+            \includegraphics[width=\linewidth]{ndiag_bar.pdf}
+        }
+    \end{minipage}\hfill%
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \textbf{\tiny{Max.\ number of diagnoses}}
+        \resizebox{\linewidth}{!}{%
+            \input{tex/ndiag_summary.tex}
+        }
+    \end{minipage}\hfill%
+}
+
+\frame{\frametitle{Variation and importance}
+    \includegraphics[width=\linewidth]{cost_bubble.pdf}
+}
+

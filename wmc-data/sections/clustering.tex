@@ -1,0 +1,53 @@
+\section{Partitioning the data}
+
+\frame{\frametitle{Subsets in the data}
+    Traditional methods include~\footfullcite{Nolte2003}:
+
+    \begin{itemize}
+        \item condition-specific populations
+        \item segmenting by age
+    \end{itemize}
+
+    However, these methods have the common flaw of under-representing groups of
+    healthcare users~\footfullcite{Vuik2016}.
+}
+
+\frame{\frametitle{Misrepresentation \-- age}
+    \includegraphics[width=\linewidth]{age_bar.pdf}
+}
+
+\frame{\frametitle{Misrepresentation \-- net cost of spell}
+    \resizebox{\textwidth}{!}{%
+        \input{tex/split_age_summary.tex}
+    }
+}
+
+\graphicspath{{img/clustering/}}
+\frame{\frametitle{What is clustering?}
+    \begin{figure}[htbp]
+        \centering
+        \animategraphics[loop,
+                         controls,
+                         width=.5\imgwidth]{1}{kmeans-}{0}{12}
+    \end{figure}
+
+    \footnotesize Image taken from \url{%
+        https://www.jeremyjordan.me/
+        grouping-data-points-with-k-means-clustering/
+    }
+}
+
+\frame{\frametitle{Clustering with healthcare data}
+
+    \begin{itemize}
+        \item Patient pathways
+            \begin{itemize}
+                \item[] \fullcite{Rebuge2012}
+            \end{itemize}
+        \item Utilisation patterns
+            \begin{itemize}
+                \item[] \fullcite{Vuik2016}
+            \end{itemize}
+    \end{itemize}
+}
+
