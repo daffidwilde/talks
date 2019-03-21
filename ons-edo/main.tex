@@ -1,0 +1,289 @@
+\documentclass[final]{beamer}
+
+\usetheme[subsectionpage=progressbar]{metropolis}
+\setbeamertemplate{footline}{}
+
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{animate}
+\usepackage[backend=bibtex, style=numeric]{biblatex}
+    \addbibresource{references}
+\usepackage[font=footnotesize,labelformat=empty]{caption}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tikz}
+    \usetikzlibrary{%
+        arrows.meta,
+        decorations.pathreplacing,
+        decorations.text,
+        patterns,
+        shapes.arrows,
+        shapes.geometric
+    }
+
+
+% TikZ styles, commands and settings
+\definecolor{magenta}{RGB}{226, 62, 138}
+\tikzstyle{every picture} += [remember picture]
+\tikzstyle{na} = [baseline=-.5ex]
+
+\tikzset{%
+    column/.pic={%
+        code{%
+            \draw[line width=1pt] (0, 0) rectangle (-2cm, 4cm);
+            \foreach \val in {0, ..., #1}{%
+                \draw[rotate=90] ([xshift=-\val*10pt] 4cm, 2cm) -- ++(0, -2cm);
+            };
+            \node at (-1cm, 1.25) {$\vdots$};
+            \foreach \val in {1, 2}{%
+                \draw (0, \val * 10pt) -- ++(-2cm, 0);
+            };
+        }
+    }
+}
+
+\tikzset{%
+    fullcolumn/.pic={%
+        code{%
+            \draw[line width=1pt] (0, 0) rectangle (-2cm, #1*10pt);
+            \foreach \val in {0, ..., #1}{%
+                \draw[rotate=90] ([xshift=-\val*10pt] #1*10pt, 2cm) -- ++(0, -2cm);
+            };
+        }
+    }
+}
+
+
+\title{%
+    Evolutionary dataset optimisation:
+    learning algorithm quality through evolution
+}
+\author{\large{Henry Wilde, Dr.\ Jonathan Gillard, Dr.\ Vincent Knight}}
+\institute{%
+    \vfill%
+    \centering%
+    \includegraphics[height=.2\paperheight]{img/cu_logo.png}%
+    \hspace{5pt}%
+    \includegraphics[height=.2\paperheight]{img/cthb_logo.jpg}
+}
+\date{}
+
+\begin{document}
+
+\frame{%
+    \maketitle%
+}
+
+\section{Premise and motivation}
+
+\frame{%
+    \centering
+    \includegraphics[width=.5\textwidth]{img/hammer.png}
+}
+
+\frame{%
+    \centering
+    \begin{figure}
+        \includegraphics[width=.8\textwidth]{img/gorilla.png}
+        \caption{%
+            via: BBC News (\url{%
+                https://www.bbc.co.uk/news/technology-33347866
+            })
+        }
+    \end{figure}
+}
+
+\frame{%
+    \begin{itemize}
+        \item Hyndman reference (reliability)
+        \item \fullcite{Torralba2011} (frailty)
+    \end{itemize}
+}
+
+\frame{%
+    Paradigm flip diagram
+}
+
+\subsection{Generating artificial data}
+
+\frame{%
+    \centering
+    \begin{figure}
+        \includegraphics[width=.5\textwidth]{img/anscombes.png}
+        \caption{%
+            via: \url{%
+                https://seaborn.pydata.org/examples/anscombes_quartet.html
+            }
+        }
+    \end{figure}
+}
+
+\frame{%
+    \centering
+    \begin{figure}
+        \includegraphics[width=.8\textwidth]{img/dino.png}
+        \caption{%
+            via: \url{%
+                https://www.autodeskresearch.com/publications/samestats
+            }
+        }
+    \end{figure}
+}
+
+\frame{%
+    Dataset similarity diagram
+}
+
+\frame{%
+    \huge{%
+        Given some algorithm, how can one find data for which it performs well?
+    }
+}
+
+\section{What is an evolutionary algorithm?}
+
+\frame{%
+    \resizebox{\textwidth}{!}{%
+        \input{tex/flowchart.tex}
+    }
+}
+
+\frame{%
+    GA example
+}
+
+\frame{%
+    \resizebox{\textwidth}{!}{%
+        \input{tex/individual.tex}
+    }
+}
+
+\frame{%
+    \resizebox{\textwidth}{!}{%
+        \input{tex/selection.tex}
+    }
+}
+
+\frame{%
+    \resizebox{\textwidth}{!}{%
+        \input{tex/crossover.tex}
+    }
+}
+
+\frame{%
+    \resizebox{\textwidth}{!}{%
+        \input{tex/mutation.tex}
+    }
+}
+
+\frame{%
+    \tiny{%
+    \begin{itemize}
+        \item A fitness function, \(f\), which acts on a single dataset
+        \item A population size, \(N \in \mathbb{N}\)
+        \item Limits on the number of rows a dataset can have:
+            \[
+                R \in \left\{%
+                    (r_{\min}, r_{\max})
+                    \in \mathbb{N}^2~|~r_{\min} \leq r_{\max}
+                \right\}
+            \]
+        \item Limits on the number of columns a dataset can have:
+            \[
+                C := \left(C_1, \ldots, C_{|\mathcal{P}|}\right)
+                ~\text{where}~
+                C_j \in \left\{ (c_{\min}, c_{\max}) \in {%
+                    \left(\mathbb{N}\cup\{\infty\}\right)
+                }^2~|~c_{\min} \leq c_{\max}\right\}
+            \]
+            for each \(j = 1, \ldots, |\mathcal{P}|\)
+        \item A set of probability distribution families, \(\mathcal{P}\). Each
+            family in this set has some parameter limits which form a part of
+            the overall search space
+        \item A probability vector to sample distributions from \(\mathcal{P}\),
+            \(w = \left(w_1, \ldots, w_{|\mathcal{P}|}\right)\)
+        \item A maximum number of iterations, \(M \in \mathbb{N}\)
+        \item Two selection parameters: one to indicate the proportion of the
+            fittest individuals to carry forward, \(b \in [0, 1]\), and the
+            other to allow for a small proportion of ``lucky'' individuals in
+            the next generation, \(l \in [0, 1]\)
+        \item A mutation probability, \(p_m \in [0, 1]\)
+        \item A shrink factor, \(s \in [0, 1]\). The relative size of a
+            component of the search space to be retained after adjustment
+    \end{itemize}
+    }
+}
+
+\section{Some example use cases}
+
+\frame{%
+    Given a dataset \(X\), \alert{maximise} \(f\) where:
+
+    \[
+        f(X) := \max_{a, b~\in \{(0, 1), (1, 0)\}}%
+        \left\{%
+            Var \left(X^{(a)}\right) - \max_i \left|X_{i}^{(b)} - 1\right|
+        \right\}
+    \]
+}
+
+\frame{%
+    \centering
+    \begin{figure}
+        \animategraphics[%
+            loop,controls,width=\textwidth%
+        ]{1}{img/circle/epoch_}{0}{100}
+    \end{figure}
+}
+
+\frame{%
+    \centering
+    \begin{figure}
+        \includegraphics[width=\textwidth]{img/circle/fitness.pdf}
+    \end{figure}
+}
+
+\frame{%
+    \begin{algorithm}[H]
+        \KwIn{A dataset (column) \(X\), some sampling fraction \(p\)}
+        \KwOut{An estimate for the mean of \(X\)}
+
+        \(Y \gets\) a random sample of \(\left\lfloor p|X| \right\rfloor\)
+        entries from \(X\)\;
+        evaluate the mean of \(Y\):
+        \[
+            \bar Y = \frac{1}{|Y|} \sum_{i=1}^{|Y|} Y_i
+        \]
+    \end{algorithm}
+
+    \[\iff f(X) = \bar Y\]
+}
+
+\frame{%
+    Anscombe's quartet
+}
+
+\frame{%
+    \centering
+    \Huge{\texttt{\$ pip install edo}}
+}
+
+\frame{%
+    \begin{center}
+        \huge{Any questions?}
+    \end{center}
+
+    \begin{center}
+        \begin{itemize}
+            \item[] Henry Wilde
+            \item[] \alert{Twitter:} @daffidwilde
+            \item[] \alert{Email:} henrydavidwilde@gmail.com
+            \item[] \alert{GitHub repository:} \url{%
+                https://github.com/daffidwilde/edo
+            }
+            \item[] \alert{Documentation:} \url{https://edo.readthedocs.io}
+        \end{itemize}
+    \end{center}
+}
+
+\end{document}
