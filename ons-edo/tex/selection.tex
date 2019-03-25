@@ -1,53 +1,48 @@
 \begin{tikzpicture}
 
-    \fill[orange!15, rounded corners] (0, 0) rectangle (3, -6)
-        node[below=90pt, midway] {\color{black} Old population};
-    \fill[rounded corners, gray!15] (6, 0) rectangle (9, -6)
-        node[below=90pt, midway] {\color{black} New population};
+    \fill[orange!15, rounded corners] (0, 0) rectangle (7, 2)
+    node[left=120pt, midway] {\small{\color{black} Old population}};
+    \fill[rounded corners, gray!15] (0, -4) rectangle (7, -2)
+    node[left=120pt, midway] {\small{\color{black} New population}};
 
     \fill[pattern=north east lines, pattern color=orange]
-        (0, -2) --
-        ++(3, 0) {[rounded corners] --
-        ++(0, 2) --
-        ++(-3, 0)} --
+        (2, 0) --
+        ++(0, 2) {[rounded corners] --
+        ++(-2, 0) --
+        ++(0, -2)} --
         cycle
         {};
    
-    \draw[->, dashed, orange, thick] (3.25, -1) to (5.75, -1);
+    \draw[->, orange, thick] (1, -0.1) to (1, -1.9);
 
     \fill[pattern=north east lines, pattern color=orange]
-        (6, -2) --
-        ++(3, 0) {[rounded corners] --
-        ++(0, 2) --
-        ++(-3, 0)} --
+        (2, -4) --
+        ++(0, 2) {[rounded corners] --
+        ++(-2, 0) --
+        ++(0, -2)} --
         cycle
         {};
 
-    \foreach \val in {-5.5, -4, -3.2} {%
+    \foreach \val in {4, 5.5, 6.2} {%
         \fill[pattern=north west lines, pattern color=magenta!85]
-            (0, \val) rectangle (3, \val+0.1);
-        \draw[->, dashed, magenta!85, thick]
-            (3.25, \val) to [out=0, in=180] (5.75, -2.15);
+            (\val, 0) rectangle (\val+0.1, 2);
+        \draw[->, magenta!85, thick]
+            (\val+0.05, -0.1) to [out=270, in=80] (2.15, -1.9);
     };
 
     \fill[pattern=north west lines, pattern color=magenta!85]
-        (6, -2.3) rectangle (9, -2);
+        (2, -4) rectangle (2.3, -2);
 
-    \draw[decorate, decoration={brace, amplitude=10pt}] (-0.5, -2) -- (-0.5, 0)
-        node[midway, left=20pt] {Best individuals};
-    \draw[decorate, decoration={brace, amplitude=10pt}] (-0.5, -5.5) -- (-0.5, -3.1)
-        node[midway, left=20pt] {Lucky individuals};
-    \draw[decorate, decoration={brace, amplitude=10pt}] (9.5, 0) -- (9.5, -2.3)
-        node[midway, right=20pt] {Parents};
+    \draw[decorate, decoration={brace, amplitude=10pt}] (0, 2.1) -- (2, 2.1)
+        node[midway, above=10pt] {\footnotesize{Best individuals}};
+    \draw[decorate, decoration={brace, amplitude=10pt}] (4, 2.1) -- (6.3, 2.1)
+        node[midway, above=10pt] {\footnotesize{Lucky individuals}};
+    \draw[decorate, decoration={brace, amplitude=10pt}] (2.3, -4.1) -- (0, -4.1)
+        node[midway, below=10pt] {\footnotesize{Parents}};
 
     \node[%
-        fill=blue!30, single arrow, minimum height=18mm, minimum width=4mm,
-        single arrow head extend=3mm, anchor=north, rotate=-90
-    ] at (7.9, -3.8) {\tiny%
-        \begin{tabular}{c}
-            Crossover \\
-            \& mutation
-        \end{tabular}
-    };
+        fill=blue!30, single arrow, minimum height=20mm, minimum width=10mm,
+        single arrow head extend=3mm, anchor=west
+    ] at (3.5, -3) {\tiny{Crossover \& mutation}};
 
 \end{tikzpicture}

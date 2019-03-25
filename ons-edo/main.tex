@@ -4,11 +4,13 @@
 \setbeamertemplate{footline}{}
 
 
-\usepackage[ruled]{algorithm2e}
+\usepackage{algorithm2e}
 \usepackage{animate}
 \usepackage[backend=bibtex, style=numeric]{biblatex}
     \addbibresource{references}
+\usepackage{booktabs}
 \usepackage[font=footnotesize,labelformat=empty]{caption}
+\usepackage[default]{Fira Sans}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{tikz}
@@ -74,10 +76,11 @@
     \maketitle%
 }
 
-\section{Premise and motivation}
+\section{Motivation}
 
 \frame{%
     \centering
+    \includegraphics[width=.2\textwidth]{img/nut.png}\hspace{.1\textwidth}%
     \includegraphics[width=.5\textwidth]{img/hammer.png}
 }
 
@@ -94,53 +97,66 @@
 }
 
 \frame{%
+    \alert{Reliability and frailty}
     \begin{itemize}
-        \item Hyndman reference (reliability)
-        \item \fullcite{Torralba2011} (frailty)
+        \item[] \fullcite{Torralba2011}
     \end{itemize}
 }
 
-\frame{%
-    Paradigm flip diagram
-}
+% TODO
+% \frame{%
+%    Paradigm flip diagram
+% }
 
-\subsection{Generating artificial data}
-
-\frame{%
-    \centering
-    \begin{figure}
-        \includegraphics[width=.5\textwidth]{img/anscombes.png}
-        \caption{%
-            via: \url{%
-                https://seaborn.pydata.org/examples/anscombes_quartet.html
-            }
-        }
-    \end{figure}
-}
+\section{Generating artificial data}
 
 \frame{%
     \centering
     \begin{figure}
-        \includegraphics[width=.8\textwidth]{img/dino.png}
-        \caption{%
-            via: \url{%
-                https://www.autodeskresearch.com/publications/samestats
-            }
-        }
+        \includegraphics[width=.3\textwidth]{img/faces/0.jpeg}\hfill%
+        \includegraphics[width=.3\textwidth]{img/faces/1.jpeg}\hfill%
+        \includegraphics[width=.3\textwidth]{img/faces/2.jpeg}
+        \caption{via: \url{https://thispersondoesnotexist.com}}
     \end{figure}
 }
 
 \frame{%
-    Dataset similarity diagram
+    \begin{figure}
+        \includegraphics[width=\textwidth]{img/resume.png}
+        \caption{via: \url{https://thisresumedoesnotexist.com}}
+    \end{figure}
 }
+
+\frame{%
+    \begin{figure}
+        \includegraphics[width=.45\textwidth]{img/cats/0.jpeg}\hfill%
+        \includegraphics[width=.45\textwidth]{img/cats/1.jpeg}
+        \caption{via: \url{https://thiscatdoesnotexist.com}}
+    \end{figure}
+}
+
+\frame{%
+    \alert{Anscombe's quartet}\vfill
+    \includegraphics[width=\textwidth]{img/anscombes.pdf}\vfill
+}
+
+\frame{%
+    \alert{The Datasaurus dozen}\vfill
+    \includegraphics[width=\textwidth]{img/datasaurus.pdf}\vfill
+}
+
+% TODO
+% \frame{%
+%     Dataset similarity diagram
+% }
 
 \frame{%
     \huge{%
-        Given some algorithm, how can one find data for which it performs well?
+        Given an algorithm, how can one find data for which it performs well?
     }
 }
 
-\section{What is an evolutionary algorithm?}
+\section{Evolutionary algorithms}
 
 \frame{%
     \resizebox{\textwidth}{!}{%
@@ -149,31 +165,24 @@
 }
 
 \frame{%
-    GA example
-}
+    \[
+        f: \mathbb{N}^2 \to \mathbb{N}; \qquad f(x_1, x_2) = x_1 + x_2
+    \]
 
-\frame{%
-    \resizebox{\textwidth}{!}{%
-        \input{tex/individual.tex}
-    }
-}
-
-\frame{%
-    \resizebox{\textwidth}{!}{%
-        \input{tex/selection.tex}
-    }
-}
-
-\frame{%
-    \resizebox{\textwidth}{!}{%
-        \input{tex/crossover.tex}
-    }
-}
-
-\frame{%
-    \resizebox{\textwidth}{!}{%
-        \input{tex/mutation.tex}
-    }
+    \begin{tabular}{lccccc}
+        \pause%
+        \alert{Population} & (25, 30) & (12, 1) & (11, 0) & (20, 12) & (24, 25)\\\\
+        \pause%
+        \alert{Get fitness} & 55 & 13 & 11 & 42 & 49\\\\
+        \pause%
+        \alert{Select parents} & (25, 30) & {} & {} & (20, 12) & (24, 25)\\\\
+        \pause%
+        \alert{Create offspring} & & (24, 30) & (25, 12) & & \\\\
+        \pause%
+        \alert{Mutate offspring} & & (\alert{15}, 30) & (25, \alert{26}) & & \\\\
+        \pause%
+        \alert{New generation} & (25, 30) & (15, 30) & (25, 26) & (20, 12) & (24, 25)
+    \end{tabular}
 }
 
 \frame{%
@@ -205,8 +214,8 @@
         \item A maximum number of iterations, \(M \in \mathbb{N}\)
         \item Two selection parameters: one to indicate the proportion of the
             fittest individuals to carry forward, \(b \in [0, 1]\), and the
-            other to allow for a small proportion of ``lucky'' individuals in
-            the next generation, \(l \in [0, 1]\)
+            other to allow for a small proportion of ``lucky'' individuals,
+            \(l \in [0, 1]\)
         \item A mutation probability, \(p_m \in [0, 1]\)
         \item A shrink factor, \(s \in [0, 1]\). The relative size of a
             component of the search space to be retained after adjustment
@@ -214,17 +223,58 @@
     }
 }
 
+\frame{%
+    \alert{Individuals}\vfill
+    \resizebox{\textwidth}{!}{%
+        \input{tex/individual.tex}
+    }\vfill
+}
+
+\frame{%
+    \alert{Selection}\vfill
+    \resizebox{\textwidth}{!}{%
+        \input{tex/selection.tex}
+    }\vfill
+}
+
+\frame{%
+    \alert{Crossover}\vfill
+    \centering
+    \resizebox{!}{.65\paperheight}{%
+        \input{tex/crossover.tex}
+    }\vfill
+}
+
+\frame{%
+    \alert{Mutation}\vfill
+    \centering
+    \resizebox{!}{.75\paperheight}{%
+        \input{tex/mutation.tex}
+    }\vfill
+}
+
+
 \section{Some example use cases}
 
 \frame{%
-    Given a dataset \(X\), \alert{maximise} \(f\) where:
+    \begin{algorithm}[H]\DontPrintSemicolon%
+        \KwIn{%
+            A dataset, \(X \in \mathbb{R}^n \times \mathbb{R}^n\);
+            \(
+                f: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R},\quad
+                f(A, B) = Var(A) - \max_i \left|B_i - 1\right|
+            \)
+        }
+        \KwOut{The \alert{maximal} value for \(f\)}\;
 
-    \[
-        f(X) := \max_{a, b~\in \{(0, 1), (1, 0)\}}%
-        \left\{%
-            Var \left(X^{(a)}\right) - \max_i \left|X_{i}^{(b)} - 1\right|
-        \right\}
-    \]
+        \(values \gets \emptyset\)\;
+        \For{each ordering, \(a, b \in {\{0, 1\}}^2\), of the columns}{%
+            calculate \(f\left(X^{(a)}, X^{(b)}\right)\)\;
+            append this to \(values\)\;
+        }
+
+        \KwRet{\(\max values\)}
+    \end{algorithm}
 }
 
 \frame{%
@@ -244,23 +294,109 @@
 }
 
 \frame{%
-    \begin{algorithm}[H]
-        \KwIn{A dataset (column) \(X\), some sampling fraction \(p\)}
-        \KwOut{An estimate for the mean of \(X\)}
+    \begin{algorithm}[H]\DontPrintSemicolon%
+        \KwIn{%
+            A dataset, \(X \in \mathbb{R}^n\);
+            some sampling proportion, \(p \in [0, 1]\);
+            a number of samples to take, \(k\)
+        }
+        \KwOut{%
+            The maximum \alert{difference} between each sampled mean of \(X\)
+            and 0
+        }\;
 
-        \(Y \gets\) a random sample of \(\left\lfloor p|X| \right\rfloor\)
-        entries from \(X\)\;
-        evaluate the mean of \(Y\):
-        \[
-            \bar Y = \frac{1}{|Y|} \sum_{i=1}^{|Y|} Y_i
-        \]
+        \(values \gets \emptyset\)\;
+        \For{\(i = 1, \ldots, k\)}{%
+            \(Y \gets\) a random sample of \(\left\lfloor np \right\rfloor\)
+            entries from \(X\)\;
+            evaluate the mean of \(Y\):
+            \[
+                \bar Y = \frac{1}{|Y|} \sum_{i=1}^{|Y|} Y_i
+            \]
+            append \(\bar Y\) to \(values\)
+        }
+
+        \KwRet{\(\max values\)}
     \end{algorithm}
-
-    \[\iff f(X) = \bar Y\]
 }
 
 \frame{%
-    Anscombe's quartet
+    \centering
+    \begin{tikzpicture}
+
+        \fill[cyan!15, rounded corners] (-1.5, 2.4) rectangle (1.5, 3)
+            node[right=40pt, below] {\color{cyan} Metadata};
+        \node at (0, 0) {%
+            \begin{tabular}{c}
+                \input{tex/meta.tex}\\
+                {}\\
+                \input{tex/best.tex}
+            \end{tabular}
+        };
+
+        \draw[decorate, decoration={brace, amplitude=10pt}, thick]%
+            (-2.5, -3) -- (-2.5, 3) node[midway, left=20pt] {\huge X};
+        \draw[decorate, decoration={brace, amplitude=10pt}, thick]%
+            (2.1, 2) -- (2.1, -3) node[midway, right=20pt] {Dataset};
+    \end{tikzpicture}
+}
+
+\frame{%
+    \includegraphics[width=\textwidth]{img/sample_mean.pdf}
+}
+
+\frame{%
+    \begin{algorithm}[H]\DontPrintSemicolon%
+        \KwIn{%
+            A dataset, \(X \in \mathbb{R}^n \times \mathbb{R}^n\);
+            a set of \alert{dissimilarity} measures, \(%
+                f_1, \ldots, f_k:
+                \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}
+            \)
+        }
+        \KwOut{The total of the measures: \(\sum_{i=1}^k f_i(X)\)}\;
+
+        \(sum \gets 0\)\;
+        \For{\(i = 1, \ldots, k\)}{%
+            evaluate \(f_i(X)\)\;
+            add this to \(sum\)\;
+        }
+
+        \KwRet{\(sum\)}
+    \end{algorithm}
+}
+
+\frame{%
+    \centering{%
+        \(X\) Mean: 5 \hfill%
+        \(Y\) Mean: 7 \hfill%
+        \(X\) Std.: 4.7 \hfill%
+        \(Y\) Std.: 4.1 \hfill%
+        Corr.: 0.8
+    }\vfill
+
+    \begin{minipage}{\linewidth}
+        \hspace*{-30mm}
+        \includegraphics[height=.4\paperheight]{img/anscombe/best_0.pdf}%
+        \hspace*{-30mm}\includegraphics[height=.4\paperheight]{img/anscombe/best_1.pdf}
+    \end{minipage}
+    \begin{minipage}{\linewidth}
+        \hspace*{-30mm}
+        \includegraphics[height=.4\paperheight]{img/anscombe/best_2.pdf}%
+        \hspace*{-30mm}\includegraphics[height=.4\paperheight]{img/anscombe/best_3.pdf}
+    \end{minipage}
+}
+
+\frame{%
+    \begin{figure}
+        \includegraphics[width=\textwidth]{img/anscombe/fitness.pdf}
+    \end{figure}
+}
+
+\frame{%
+    \centering
+    \includegraphics[width=.2\textwidth]{img/nut.png}\hspace{.1\textwidth}%
+    \includegraphics[width=.5\textwidth]{img/hammer.png}
 }
 
 \frame{%
@@ -269,21 +405,23 @@
 }
 
 \frame{%
-    \begin{center}
-        \huge{Any questions?}
-    \end{center}
-
-    \begin{center}
+    Henry Wilde
         \begin{itemize}
-            \item[] Henry Wilde
             \item[] \alert{Twitter:} @daffidwilde
             \item[] \alert{Email:} henrydavidwilde@gmail.com
-            \item[] \alert{GitHub repository:} \url{%
+            \item[] \alert{Repository:} \url{%
                 https://github.com/daffidwilde/edo
             }
-            \item[] \alert{Documentation:} \url{https://edo.readthedocs.io}
+            \item[] \alert{Documentation:} \url{https://edo.readthedocs.io}\\
         \end{itemize}
-    \end{center}
+
+    Paper in preparation:
+        \begin{itemize}
+            \item[]\textit{%
+                ``Evolutionary Dataset Optimisation: understanding algorithm
+                quality through evolution''
+            }
+        \end{itemize}
 }
 
 \end{document}

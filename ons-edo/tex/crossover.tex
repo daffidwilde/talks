@@ -54,7 +54,7 @@
 
     \draw[->, dashed, magenta, thick]
         ([xshift=-60pt, yshift=15pt] parent2.south west)
-        to [out=200, in=40]
+        to [out=200, in=60]
         ([xshift=10pt, yshift=5pt] dims.north);
     \draw[->, dashed, magenta, thick]
         ([yshift=-5pt] parent1.south)
@@ -79,8 +79,7 @@
         ([yshift=-5pt] dims.south)
         to [out=290, in=140]
         (0.5, -7)
-        node[left=50pt, yshift=30pt] {%
-            
+        node[left=50pt, yshift=80pt] {%
             \begin{tabular}{ll}
                 1. & Sample number of\\
                 {} & rows and columns
@@ -90,8 +89,8 @@
     \draw[->, black, thick]
         ([xshift=-5pt, yshift=-5pt] cols.south west)
         to [out=235, in=80]
-        (4, -5)
-        node[right=50pt, yshift=30pt] {%
+        (4, -5.25)
+        node[right=50pt, yshift=20pt] {%
             
             \begin{tabular}{ll}
                 2. & Sample columns and\\
