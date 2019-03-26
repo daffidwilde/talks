@@ -1,24 +1,17 @@
 \section{Some example use cases}
 
 \frame{%
-    \begin{algorithm}[H]\DontPrintSemicolon%
-        \KwIn{%
-            A dataset, \(X \in \mathbb{R}^n \times \mathbb{R}^n\);
-            \(
-                f: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R},\quad
-                f(A, B) = Var(A) - \max_i \left|B_i - 1\right|
-            \)
-        }
-        \KwOut{The \alert{maximal} value for \(f\)}\;
+    \alert{Maximise}
+    \[
+        f: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R},\qquad
+        f(A, B) = Var(A) - \max_i \left|B_i - 1\right|
+    \]
+}
 
-        \(values \gets \emptyset\)\;
-        \For{each ordering, \(a, b \in {\{0, 1\}}^2\), of the columns}{%
-            calculate \(f\left(X^{(a)}, X^{(b)}\right)\)\;
-            append this to \(values\)\;
-        }
-
-        \KwRet{\(\max values\)}
-    \end{algorithm}
+\frame{%
+    \makebox[\linewidth]{%
+        \includegraphics[width=.9\paperwidth]{img/circle/fitness.pdf}
+    }
 }
 
 \frame{%
@@ -30,38 +23,26 @@
     \end{figure}
 }
 
+
+
 \frame{%
-    \centering
-    \begin{figure}
-        \includegraphics[width=\textwidth]{img/circle/fitness.pdf}
-    \end{figure}
+    Given:
+    \begin{itemize}
+        \item a large column, \(X\);
+        \item some sampling proportion, \(p \in [0, 1]\);
+        \item a number of samples to take, \(k\)
+    \end{itemize}
+
+    \alert{Minimise}
+    \begin{itemize}
+        \item[] The maximum sampled mean of \(X\)
+    \end{itemize}
 }
 
 \frame{%
-    \begin{algorithm}[H]\DontPrintSemicolon%
-        \KwIn{%
-            A dataset, \(X \in \mathbb{R}^n\);
-            some sampling proportion, \(p \in [0, 1]\);
-            a number of samples to take, \(k\)
-        }
-        \KwOut{%
-            The maximum \alert{difference} between each sampled mean of \(X\)
-            and 0
-        }\;
-
-        \(values \gets \emptyset\)\;
-        \For{\(i = 1, \ldots, k\)}{%
-            \(Y \gets\) a random sample of \(\left\lfloor np \right\rfloor\)
-            entries from \(X\)\;
-            evaluate the mean of \(Y\):
-            \[
-                \bar Y = \frac{1}{|Y|} \sum_{i=1}^{|Y|} Y_i
-            \]
-            append \(\bar Y\) to \(values\)
-        }
-
-        \KwRet{\(\max values\)}
-    \end{algorithm}
+    \makebox[\linewidth]{%
+        \includegraphics[width=.9\paperwidth]{img/sample_mean.pdf}
+    }
 }
 
 \frame{%
@@ -86,28 +67,18 @@
 }
 
 \frame{%
-    \includegraphics[width=\textwidth]{img/sample_mean.pdf}
+    Given a set of \(k\) \alert{dissimilarity} measures:
+    \[
+        f_1, \ldots, f_k: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}
+    \]
+
+    \alert{Minimise} their sum
 }
 
 \frame{%
-    \begin{algorithm}[H]\DontPrintSemicolon%
-        \KwIn{%
-            A dataset, \(X \in \mathbb{R}^n \times \mathbb{R}^n\);
-            a set of \alert{dissimilarity} measures, \(%
-                f_1, \ldots, f_k:
-                \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}
-            \)
-        }
-        \KwOut{The total of the measures: \(\sum_{i=1}^k f_i(X)\)}\;
-
-        \(sum \gets 0\)\;
-        \For{\(i = 1, \ldots, k\)}{%
-            evaluate \(f_i(X)\)\;
-            add this to \(sum\)\;
-        }
-
-        \KwRet{\(sum\)}
-    \end{algorithm}
+    \makebox[\linewidth]{%
+        \includegraphics[width=.9\paperwidth]{img/anscombe/fitness.pdf}
+    }
 }
 
 \frame{%
@@ -131,10 +102,6 @@
     \end{minipage}
 }
 
-\frame{%
-    \begin{figure}
-        \includegraphics[width=\textwidth]{img/anscombe/fitness.pdf}
-    \end{figure}
-}
+
 
 \hammerpage%
