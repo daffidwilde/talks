@@ -1,9 +1,7 @@
 \begin{tikzpicture}
 
-    \fill[orange!15, rounded corners] (0, 0) rectangle (7, 2)
-    node[left=120pt, midway] {\small{\color{black} Old population}};
-    \fill[rounded corners, gray!15] (0, -4) rectangle (7, -2)
-    node[left=120pt, midway] {\small{\color{black} New population}};
+    \fill[gray!15, rounded corners] (0, 0) rectangle (7, 2);
+    \fill[rounded corners, gray!15] (0, -4) rectangle (7, -2);
 
     \fill[pattern=north east lines, pattern color=orange]
         (2, 0) --
@@ -15,7 +13,7 @@
    
     \draw[->, orange, thick] (1, -0.1) to (1, -1.9);
 
-    \fill[pattern=north east lines, pattern color=orange]
+    \fill[orange!50]
         (2, -4) --
         ++(0, 2) {[rounded corners] --
         ++(-2, 0) --
@@ -30,19 +28,13 @@
             (\val+0.05, -0.1) to [out=270, in=80] (2.15, -1.9);
     };
 
-    \fill[pattern=north west lines, pattern color=magenta!85]
-        (2, -4) rectangle (2.3, -2);
+    \fill[magenta!50] (2, -4) rectangle (2.3, -2);
 
     \draw[decorate, decoration={brace, amplitude=10pt}] (0, 2.1) -- (2, 2.1)
         node[midway, above=10pt] {\footnotesize{Best individuals}};
     \draw[decorate, decoration={brace, amplitude=10pt}] (4, 2.1) -- (6.3, 2.1)
         node[midway, above=10pt] {\footnotesize{Lucky individuals}};
-    \draw[decorate, decoration={brace, amplitude=10pt}] (2.3, -4.1) -- (0, -4.1)
-        node[midway, below=10pt] {\footnotesize{Parents}};
-
-    \node[%
-        fill=blue!30, single arrow, minimum height=20mm, minimum width=10mm,
-        single arrow head extend=3mm, anchor=west
-    ] at (3.5, -3) {\tiny{Crossover \& mutation}};
+%    \draw[decorate, decoration={brace, amplitude=10pt}] (2.3, -4.1) -- (0, -4.1)
+%        node[midway, below=10pt] {\footnotesize{Parents}};
 
 \end{tikzpicture}

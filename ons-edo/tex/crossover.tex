@@ -8,9 +8,6 @@
     \node[fill=cyan!15, minimum width=4cm, rounded corners] (info1) at (-2, 4.5)
         {\(N(0, 1) \qquad Po(3.6)\)};
 
-    \draw[decorate, decoration={brace, amplitude=10pt}] (-5, 1.5) -- (-5, 4.75)
-        node[midway, left=20pt] {First parent};
-
     % Second individual
     \path (8, 2.25) pic {fullcolumn=5}
           (10, 2.25) pic {fullcolumn=5}
@@ -20,27 +17,19 @@
     \node[fill=cyan!15, minimum width=6cm, rounded corners] (info2) at (9, 4.5)
         {\(U(3, 5) \qquad N(2, 2) \qquad Po(2.5)\)};
 
-    \draw[decorate, decoration={brace, amplitude=10pt}] (13, 4.75) -- (13, 2.25)
-        node[midway, right=20pt] {Second parent};
-
-
     % Pools
-    \node[ellipse, fill=magenta!15] (dims) at (-1, -2) {%
-        
-        \begin{tabular}{c}
-            Parent\\
-            dimensions
-        \end{tabular}
-    };
-
-    \node[ellipse, fill=orange!15] (cols) at (9, -1.5) {%
-        
-        \begin{tabular}{c}
-            Parent columns\\
-            (and their metadata)
-        \end{tabular}
-    };
-
+    \node[%
+        ellipse,
+        fill=magenta!15,
+        minimum width=3cm,
+        minimum height=2cm
+    ] (dims) at (-1, -2) {Dimensions};
+    \node[%
+        ellipse,
+        fill=orange!15,
+        minimum width=3cm,
+        minimum height=2cm
+    ] (cols) at (9, -1.5) {Columns};
 
     % Connecting parents to pools
     \draw[->, dashed, orange, thick]%
@@ -49,8 +38,7 @@
 
     \draw[->, dashed, orange, thick]
         ([yshift=20pt, yshift=-5pt] parent2.south east)
-        to [out=270, in=80] ([xshift=5pt, yshift=5pt] cols.north)%
-        node[right=30pt, yshift=20pt] {Pool columns};
+        to [out=270, in=80] ([xshift=5pt, yshift=5pt] cols.north);
 
     \draw[->, dashed, magenta, thick]
         ([xshift=-60pt, yshift=15pt] parent2.south west)
@@ -58,8 +46,7 @@
         ([xshift=10pt, yshift=5pt] dims.north);
     \draw[->, dashed, magenta, thick]
         ([yshift=-5pt] parent1.south)
-        to [out=270, in=90] ([xshift=-10pt, yshift=5pt] dims.north)
-        node[left=20pt, yshift=20pt] {Pool dimensions};
+        to [out=270, in=90] ([xshift=-10pt, yshift=5pt] dims.north);
 
 
     % The new individual
@@ -70,32 +57,17 @@
     \node[fill=cyan!15, minimum width=6cm, rounded corners] at (4, -6)
         {\(N(0, 1) \qquad Po(2.5) \qquad U(3, 5)\)};
 
-    \draw[decorate, decoration={brace, amplitude=10pt}] (8, -5.75) -- (8, -9)
-        node[midway, right=20pt] {A new individual};
-
-
     % Connecting up
-    \draw[->, black, thick]
+    \draw[->, magenta, thick]
         ([yshift=-5pt] dims.south)
-        to [out=290, in=140]
+        to [out=270, in=140]
         (0.5, -7)
-        node[left=50pt, yshift=80pt] {%
-            \begin{tabular}{ll}
-                1. & Sample number of\\
-                {} & rows and columns
-            \end{tabular}
-        };
+        node[above=50pt,left=40pt] {\Large (1)};
 
-    \draw[->, black, thick]
+    \draw[->, orange, thick]
         ([xshift=-5pt, yshift=-5pt] cols.south west)
-        to [out=235, in=80]
+        to [out=235, in=90]
         (4, -5.25)
-        node[right=50pt, yshift=20pt] {%
-            
-            \begin{tabular}{ll}
-                2. & Sample columns and\\
-                {} & fill/trim values as needed
-            \end{tabular}
-        };
+        node[above=40pt, right=55pt] {\Large (2)};
 
 \end{tikzpicture}

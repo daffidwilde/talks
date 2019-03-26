@@ -9,20 +9,9 @@
     \node[fill=cyan!15, minimum width=6cm, rounded corners] at (1, 3.5)
         {\(U(1.1, 3.2) \qquad Po(1.2) \qquad N(0.5, 1.2)\)};
 
-    \draw[decorate, decoration={brace, amplitude=10pt}] (4.5, 3.9) -- (4.5, 1.4)
-        node[midway, right=20pt] {An individual};
-
-
     % Adding a row
     \draw[->, black, ultra thick]
-        ([yshift=-5pt] individual.south)
-        to [out=290, in=190]
-        node[left=50pt, below, pos=0.2] {\Large%
-        \begin{tabular}{c}
-            Add a row\\
-            with probability \(p_m\)
-        \end{tabular}
-        } (6.1, -0.5);
+        ([yshift=-5pt] individual.south) to [out=290, in=190] (6.1, -0.5);
 
     \path (9, -1) pic {fullcolumn=4}
           (11, -1) pic {fullcolumn=4}
@@ -41,24 +30,13 @@
     \draw[->, cyan, thick]
         ([xshift=5pt] r-info.east)
         to [bend left=30]
-        node[right, pos=0.1] {%
-            \begin{tabular}{c}
-                Sample from\\
-                metadata
-            \end{tabular}
-        } ([xshift=5pt] new-row.east);
+        ([xshift=5pt] new-row.east);
 
 
     % Deleting a row
     \draw[->, black, ultra thick]
         ([xshift=10pt, yshift=10pt] r-info.north east)
-        to [out=30, in=110]
-        node[right=20pt, above=10pt, pos=0.2] {\Large%
-        \begin{tabular}{c}
-            Remove a row\\
-            with probability \(p_m\)
-        \end{tabular}
-        } (20, -0.5);
+        to [out=30, in=110] (20, -0.5);
 
     \fill[pattern=north west lines, pattern color=magenta]
         (17.99, -3.15) rectangle (24, -2.8)
@@ -79,20 +57,14 @@
 
     % Adding a column
     \draw[->, black, ultra thick]
-        (20.4, -4) to [out=270, in=20]
-        node[right=20pt, pos=0.5] {\Large%
-            \begin{tabular}{c}
-                Add a column\\
-                with probability \(p_m\)
-            \end{tabular}
-        } (18, -7);
+        (20.4, -4) to [out=270, in=20] (18, -7);
 
-    \node[ellipse, fill=orange!40] (dists) at (11, -6) {\large%
-        \begin{tabular}{c}
-            Families of\\
-            distributions
-        \end{tabular}
-    };
+    \node[%
+        ellipse,
+        fill=orange!40,
+        minimum width=3cm,
+        minimum height=2cm
+    ] (dists) at (12, -6) {};
 
     \path (10, -10) pic {fullcolumn=4}
           (12, -10) pic {fullcolumn=4}
@@ -110,33 +82,18 @@
 
     \draw[->, orange, thick]
         ([xshift=5pt] dists.east)
-        to [out=0, in=90] node[right=10pt, above=10pt, pos=0.5] {%
-            \begin{tabular}{c}
-                Sample distribution\\
-                and its parameters
-            \end{tabular}
-        } ([yshift=5pt] c-info.north);
+        to [out=0, in=90]
+        ([yshift=5pt] c-info.north);
 
     \draw[->, cyan, thick]
         ([xshift=2pt] c-info.east)
         to [out=-20, in=30]
-        node[right, pos=0.5] {%
-            \begin{tabular}{c}
-                Sample values\\
-                from distribution
-            \end{tabular}
-        } (17.1, -9.1);
+        (17.1, -9.1);
 
 
     % Deleting a column
     \draw[->, black, ultra thick]
-        (7.5, -7) to [out=160, in=70]
-        node[left=70pt, above=10pt, pos=0.3] {\Large%
-            \begin{tabular}{c}
-                Remove a column\\
-                with probability \(p_m\)
-            \end{tabular}
-        } (3, -9);
+        (7.5, -7) to [out=160, in=70] (3, -9);
 
     \fill[pattern=north west lines, pattern color=magenta]
         (-0.01, -12) rectangle (2, -10.6)
@@ -150,21 +107,14 @@
 
     \draw[thick, magenta] (0, -10) -- (2, -10);
 
-    \node (delete-col) at (-2, -13) {\color{magenta} Chosen at random};
+    \node (delete-col) at (-1, -13) {\color{magenta} Chosen at random};
     \draw[->, magenta, thick]
-        (delete-col.east) to [out=0, in=270] (col-remove.south);
+        (delete-col.east) to [out=30, in=270] (col-remove.south);
 
 
     % Mutate column parameters
     \draw[->, black, ultra thick]
-        (3, -13) to [out=280, in=190]
-        node[left=80pt, below=30pt, pos=0.2] {\Large%
-            \begin{tabular}{c}
-                Resample each parameter from\\
-                the corresponding limits\\
-                with probability \(p_m\)
-            \end{tabular}
-        } (7, -16);
+        (3, -13) to [out=280, in=190] (7, -16);
 
     \path (10, -17) pic {fullcolumn=4}
           (12, -17) pic {fullcolumn=4}
@@ -180,14 +130,7 @@
 
     % Mutate values
     \draw[->, black, ultra thick]
-        (14, -14) to [out=30, in=130]
-        node[right=90pt, above, pos=0.75] {\Large%
-            \begin{tabular}{c}
-                Resample each value from\\
-                the corresponding distribution\\
-                with probability \(p_m\)
-            \end{tabular}
-        } (20, -15);
+        (14, -14) to [out=30, in=130] (20, -15);
 
 
     \fill[cyan!30] (19, -17.3) rectangle (23, -16.95);
@@ -203,15 +146,5 @@
 
     \node[fill=cyan!15, minimum width=6cm, rounded corners] at (22, -16)
         {\(U(1.1, 3.2) \qquad Po(1.2) \qquad N(0.5, 1.2)\)};
-
-    \draw[decorate, decoration={brace, amplitude=10pt}]
-        (18.5, -18.1) -- (18.5, -15.6)
-        node[midway, left=20pt] {%
-            \begin{tabular}{r}
-                A mutated\\
-                individual
-            \end{tabular}
-        };
-
 
 \end{tikzpicture}
