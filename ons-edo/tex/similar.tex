@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+
+    % Dataset
+    \fill[gray!15] (-4, 5) rectangle (-2, 8.5);
+    \fill[cyan!35] (-2, 5) rectangle (0, 8.5);
+    \fill[magenta!5] (0, 5) rectangle (2, 8.5);
+    \path (-2, 5) pic {fullcolumn=10}
+          (0, 5) pic {fullcolumn=10}
+          (2, 5) pic {fullcolumn=10};
+    \node (dataset) at (-1, 4.5) {};
+
+    % A similar dataset
+    \pause%
+    \fill[pattern=north west lines, pattern color=cyan!35]
+        (6, 0) rectangle (8, 3.15);
+    \fill[pattern=north east lines, pattern color=magenta!50]
+        (8, 0) rectangle (10, 3.15);
+    \fill[pattern=north west lines, pattern color=gray!50]
+        (10, 0) rectangle (12, 3.15);
+    \path (8, 0) pic {fullcolumn=9}
+        (10, 0) pic {fullcolumn=9}
+        (12, 0) pic {fullcolumn=9};
+    \node (similar) at (5.5, 2) {};
+
+    \pause%
+    \draw[orange, ultra thick, rounded corners]
+        (-4.5, 4.4) rectangle (2.5, 9.2);
+    \draw[->, orange, ultra thick]
+        (dataset.south) to [out=290, in=180] (similar.west)
+        node[midway, above=10pt] {\Large\color{orange} make `similar'};
+
+\end{tikzpicture}

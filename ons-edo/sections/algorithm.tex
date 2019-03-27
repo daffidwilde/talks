@@ -1,0 +1,118 @@
+\section{Evolutionary algorithms}
+
+\frame{%
+    \makebox[\linewidth]{%
+        \resizebox{!}{.85\paperheight}{%
+            \input{tex/flowchart.tex}
+        }
+    }
+}
+
+\frame{%
+    \[
+        \max\quad f: \mathbb{N}^2 \to \mathbb{N}; \qquad f(x_1, x_2) = x_1 + x_2
+    \]\vfill
+    \hspace*{-5mm}\begin{tabular}{lccccc}
+        \pause%
+        \alert{Population} & (25, 30) & (12, 1) & (11, 0) & (20, 12) & (24, 25)\\
+        \pause%
+        \alert{Get fitness} & 55 & 13 & 11 & 42 & 49\\
+        \pause%
+        \alert{Select parents} & (25, 30) & {} & {} & (20, 12) & (24, 25)\\
+        \pause%
+        \alert{Create offspring} & & (24, 30) & (25, 12) & & \\
+        \pause%
+        \alert{Mutate offspring} & & (24, 30) & (25, \alert{13}) & & \\
+        \pause%
+        \alert{New generation} & (25, 30) & (24, 30) & (25, 13) & (20, 12) & (24, 25)
+    \end{tabular}
+}
+
+\frame{%
+    \[
+        \max\quad f: \mathbb{N}^2 \to \mathbb{N}; \qquad f(x_1, x_2) = x_1 + x_2
+    \]\vfill
+    \hspace*{-5mm}\begin{tabular}{lccccc}
+        \rcg\alert{Population} & (25, 30) & (12, 1) & (11, 0) & (20, 12) & (24, 25)\\
+        \rcg\alert{Get fitness} & 55 & 13 & 11 & 42 & 49\\
+        \alert{Select parents} & (25, 30) & {} & {} & (20, 12) & (24, 25)\\
+        \alert{Create offspring} & & (24, 30) & (25, 12) & & \\
+        \alert{Mutate offspring} & & (24, 30) & (25, \alert{13}) & & \\
+        \alert{New generation} & (25, 30) & (24, 30) & (25, 13) & (20, 12) & (24, 25)
+    \end{tabular}
+}
+
+\frame{%
+    \vfill
+    \centering
+    \resizebox{!}{.9\paperheight}{%
+        \input{tex/individual.tex}
+    }\vfill
+}
+
+\frame{%
+    \[
+        \max\quad f: \mathbb{N}^2 \to \mathbb{N}; \qquad f(x_1, x_2) = x_1 + x_2
+    \]\vfill
+    \hspace*{-5mm}\begin{tabular}{lccccc}
+        \alert{Population} & (25, 30) & (12, 1) & (11, 0) & (20, 12) & (24, 25)\\
+        \alert{Get fitness} & 55 & 13 & 11 & 42 & 49\\
+        \rcg\alert{Select parents} & (25, 30) &  &  & (20, 12) & (24, 25)\\
+        \alert{Create offspring} & & (24, 30) & (25, 12) & & \\
+        \alert{Mutate offspring} & & (24, 30) & (25, \alert{13}) & & \\
+        \alert{New generation} & (25, 30) & (24, 30) & (25, 13) & (20, 12) & (24, 25)
+    \end{tabular}
+}
+
+\frame{%
+    \vfill
+    \centering
+    \resizebox{!}{.9\paperheight}{%
+        \input{tex/selection.tex}
+    }\vfill
+}
+
+\frame{%
+    \[
+        \max\quad f: \mathbb{N}^2 \to \mathbb{N}; \qquad f(x_1, x_2) = x_1 + x_2
+    \]\vfill
+    \hspace*{-5mm}\begin{tabular}{lccccc}
+        \alert{Population} & (25, 30) & (12, 1) & (11, 0) & (20, 12) & (24, 25)\\
+        \alert{Get fitness} & 55 & 13 & 11 & 42 & 49\\
+        \alert{Select parents} & (25, 30) & {} & {} & (20, 12) & (24, 25)\\
+        \rcg\alert{Create offspring} & {} & (24, 30) & (25, 12) & {} & {}\\
+        \alert{Mutate offspring} & {} & (24, 30) & (25, \alert{13}) & {} & {}\\
+        \alert{New generation} & (25, 30) & (24, 30) & (25, 13) & (20, 12) & (24, 25)
+    \end{tabular}
+}
+
+\frame{%
+    \vfill
+    \centering
+    \resizebox{!}{.9\paperheight}{%
+        \input{tex/crossover.tex}
+    }\vfill
+}
+
+\frame{%
+    \[
+        \max\quad f: \mathbb{N}^2 \to \mathbb{N}; \qquad f(x_1, x_2) = x_1 + x_2
+    \]\vfill
+    \hspace*{-5mm}\begin{tabular}{lccccc}
+        \alert{Population} & (25, 30) & (12, 1) & (11, 0) & (20, 12) & (24, 25)\\
+        \alert{Get fitness} & 55 & 13 & 11 & 42 & 49\\
+        \alert{Select parents} & (25, 30) & {} & {} & (20, 12) & (24, 25)\\
+        \alert{Create offspring} & & (24, 30) & (25, 12) & & \\
+        \rcg\alert{Mutate offspring} & {} & (24, 30) & (25, \alert{13}) & {} & {}\\
+        \rcg\alert{New generation} & (25, 30) & (24, 30) & (25, 13) & (20, 12) & (24, 25)
+    \end{tabular}
+}
+
+\frame{%
+    \vfill
+    \centering
+    \resizebox{!}{.9\paperheight}{%
+        \input{tex/mutation.tex}
+    }\vfill
+}
+
