@@ -15,12 +15,9 @@
 }
 
 \frame{%
-    \centering
-    \begin{figure}
-        \animategraphics[%
-            loop,controls,width=\textwidth%
-        ]{1}{img/circle/epoch_}{0}{100}
-    \end{figure}
+    \makebox[\linewidth]{%
+        \includegraphics[width=.9\paperwidth]{img/circle/main.pdf}
+    }
 }
 
 
@@ -41,29 +38,14 @@
 
 \frame{%
     \makebox[\linewidth]{%
-        \includegraphics[width=.9\paperwidth]{img/sample_mean.pdf}
+        \includegraphics[width=.9\paperwidth]{img/sm_fitness.pdf}
     }
 }
 
 \frame{%
-    \centering
-    \begin{tikzpicture}
-
-        \fill[cyan!15, rounded corners] (-1.5, 2.4) rectangle (1.5, 3)
-            node[right=40pt, below] {\color{cyan} Metadata};
-        \node at (0, 0) {%
-            \begin{tabular}{c}
-                \input{tex/meta.tex}\\
-                {}\\
-                \input{tex/best.tex}
-            \end{tabular}
-        };
-
-        \draw[decorate, decoration={brace, amplitude=10pt}, thick]%
-            (-2.5, -3) -- (-2.5, 3) node[midway, left=20pt] {\huge X};
-        \draw[decorate, decoration={brace, amplitude=10pt}, thick]%
-            (2.1, 2) -- (2.1, -3) node[midway, right=20pt] {Dataset};
-    \end{tikzpicture}
+    \makebox[\linewidth]{%
+        \includegraphics[width=.9\paperwidth]{img/sample_mean.pdf}
+    }
 }
 
 \frame{%
