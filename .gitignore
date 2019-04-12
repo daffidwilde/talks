@@ -2,6 +2,7 @@
 *.bbl
 *.blg
 *blx.bib
+*.csv
 *.nav
 *.out
 *.run.xml
